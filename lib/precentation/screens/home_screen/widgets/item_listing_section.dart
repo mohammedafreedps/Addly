@@ -1,4 +1,5 @@
 import 'package:addly/data/constant_data.dart';
+import 'package:addly/precentation/screens/home_screen/widgets/given_money_alert.dart';
 import 'package:addly/precentation/screens/home_screen/widgets/item_block_tile.dart';
 import 'package:addly/precentation/utils/app_styles.dart';
 import 'package:addly/provider/item_counting_provider.dart';
@@ -14,6 +15,9 @@ Widget itemListingSection({required BuildContext context}) {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                IconButton(onPressed: (){
+                  givenMoney(context: context);
+                }, icon: const Icon(Icons.money,color: AppColors.secondaryColor,)),
                 Text('Items',style: TextStyles.boldSecondary.copyWith(fontSize: 30),),
                 IconButton(onPressed: (){
                   context.read<ItemCountingProvider>().resetValues();

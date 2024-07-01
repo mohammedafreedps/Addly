@@ -22,12 +22,32 @@ Widget itemTile(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
-            children: [Text(itemName,style: TextStyles.boldAcsent.copyWith(fontSize: 20),), Text('₹ $itemPrice',style: TextStyles.normalAcsent,)],
+            children: [
+              Text(
+                itemName,
+                style: TextStyles.boldAcsent.copyWith(fontSize: 20),
+              ),
+              Text(
+                '₹ $itemPrice',
+                style: TextStyles.normalAcsent,
+              )
+            ],
           ),
-          Text(context
-              .watch<ItemCountingProvider>()
-              .itemCounts[index]
-              .toString(),style: TextStyles.boldAcsent.copyWith(fontSize: 15),),
+          context.read<ItemCountingProvider>().itemCounts[index] == 0
+              ? Text(
+                  context
+                      .watch<ItemCountingProvider>()
+                      .itemCounts[index]
+                      .toString(),
+                  style: TextStyles.boldAcsent.copyWith(fontSize: 15),
+                )
+              : Text(
+                  context
+                      .watch<ItemCountingProvider>()
+                      .itemCounts[index]
+                      .toString(),
+                  style: TextStyles.boldActive.copyWith(fontSize: 15),
+                ),
           TextButton(
             onPressed: () {
               showDialog(
@@ -37,25 +57,33 @@ Widget itemTile(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: 300,
-                    child: CupertinoPicker(
-                      backgroundColor: Colors.white,
-                      itemExtent: 32,
-                      scrollController: FixedExtentScrollController(
-                          initialItem: context
-                              .watch<ItemCountingProvider>()
-                              .itemCounts[index]),
-                      children: ListGenerators.makeTextOneToFifty(),
-                      onSelectedItemChanged: (value) {
-                        context
-                            .read<ItemCountingProvider>()
-                            .changeItemCount(value: value, index: index);
-                      },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: CupertinoPicker(
+                        backgroundColor: AppColors.primaryColor,
+                        itemExtent: 32,
+                        useMagnifier: true,
+                        diameterRatio: 1,
+                        scrollController: FixedExtentScrollController(
+                            initialItem: context
+                                .watch<ItemCountingProvider>()
+                                .itemCounts[index]),
+                        children: ListGenerators.makeTextOneToFifty(),
+                        onSelectedItemChanged: (value) {
+                          context
+                              .read<ItemCountingProvider>()
+                              .changeItemCount(value: value, index: index);
+                        },
+                      ),
                     ),
                   ),
                 ),
               );
             },
-            child: const Text('Item Count',style: TextStyles.normalAcsent,),
+            child: const Text(
+              'Item Count',
+              style: TextStyles.normalAcsent,
+            ),
           )
         ],
       ),

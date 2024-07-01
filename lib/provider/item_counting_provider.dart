@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
 class ItemCountingProvider extends ChangeNotifier{
-  List<int> itemCounts = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-  List<int> totalsList = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+  List<int> itemCounts = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  List<int> totalsList = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   int grandTotalPrice = 0;
+  TextEditingController givenMoneyController = TextEditingController();
+  int balanceAmount = 0;
 
   void changeItemCount({required int value,required int index}){
     grandTotalPrice = 0;
@@ -99,6 +101,41 @@ class ItemCountingProvider extends ChangeNotifier{
       totalsList[12] = 0;
     }
 
+    if(itemCounts[13] != 0){
+      totalsList[13] = itemCounts[13] * 40;
+    }else{
+      itemCounts[13] = 0;
+      totalsList[13] = 0;
+    }
+
+    if(itemCounts[14] != 0){
+      totalsList[14] = itemCounts[14] * 580;
+    }else{
+      itemCounts[14] = 0;
+      totalsList[14] = 0;
+    }
+
+    if(itemCounts[15] != 0){
+      totalsList[15] = itemCounts[15] * 300;
+    }else{
+      itemCounts[15] = 0;
+      totalsList[15] = 0;
+    }
+
+    if(itemCounts[16] != 0){
+      totalsList[16] = itemCounts[16] * 170;
+    }else{
+      itemCounts[16] = 0;
+      totalsList[16] = 0;
+    }
+
+    if(itemCounts[17] != 0){
+      totalsList[17] = itemCounts[17] * 70;
+    }else{
+      itemCounts[17] = 0;
+      totalsList[17] = 0;
+    }
+
     totalsList.forEach((value) {
       grandTotalPrice += value;
     },);
@@ -106,9 +143,18 @@ class ItemCountingProvider extends ChangeNotifier{
   }
 
   void resetValues(){
-    itemCounts = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-    totalsList = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+    itemCounts = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    totalsList = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     grandTotalPrice = 0;
+    balanceAmount = 0;
+    notifyListeners();
+  }
+
+  void checkBalance(){
+    balanceAmount = 0;
+    int givenAmount = int.tryParse(givenMoneyController.text.trim()) ?? 0;
+    balanceAmount = givenAmount - grandTotalPrice;
+    givenMoneyController.clear();
     notifyListeners();
   }
 }

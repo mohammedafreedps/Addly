@@ -12,7 +12,12 @@ class ConstantData{
     'Egg',
     'Dosa',
     'Chappathi',
-    'CornPuff', 
+    'CornPuff',
+    'Bread',
+    'Ghee 1000g',
+    'Ghee 500g',
+    'Ghee 250g',
+    'Ghee 100g'
   ];
 
   static List<String> productPrice = [
@@ -28,6 +33,11 @@ class ConstantData{
     '9',
     '55',
     '50',
-    '30'
+    '30',
+    '40',
+    '580',
+    '300',
+    '170',
+    '70'
   ];
 }

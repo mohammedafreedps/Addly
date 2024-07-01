@@ -44,6 +44,26 @@ Widget itemBlockTitle({required int index, required BuildContext context, requir
   if(itemName == ConstantData.productName[12]){
     return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
   }
+  if(itemName == ConstantData.productName[13]){
+    return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+  }
+  if(itemName == ConstantData.productName[14]){
+    return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+  }
+  if(itemName == ConstantData.productName[15]){
+    return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+  }
+  if(itemName == ConstantData.productName[16]){
+    return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+  }
+  if(itemName == ConstantData.productName[17]){
+    return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+  }
+  if(itemName == ConstantData.productName[18]){
+    return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+  }
+
+
   else{
     return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: 'else Item', itemPrice: itemPrice);
   }
