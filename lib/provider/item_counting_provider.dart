@@ -147,6 +147,7 @@ class ItemCountingProvider extends ChangeNotifier{
     totalsList = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     grandTotalPrice = 0;
     balanceAmount = 0;
+    givenMoneyController.clear();
     notifyListeners();
   }
 
@@ -154,7 +155,6 @@ class ItemCountingProvider extends ChangeNotifier{
     balanceAmount = 0;
     int givenAmount = int.tryParse(givenMoneyController.text.trim()) ?? 0;
     balanceAmount = givenAmount - grandTotalPrice;
-    givenMoneyController.clear();
     notifyListeners();
   }
 }

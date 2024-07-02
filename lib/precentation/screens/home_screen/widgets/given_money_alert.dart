@@ -8,20 +8,25 @@ Future givenMoney({required BuildContext context}) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Expanded(
-              child: TextField(
-                controller: context.read<ItemCountingProvider>().givenMoneyController,
-                cursorColor: AppColors.secondaryColor,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.secondaryColor)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.secondaryColor))
-                ),
+          content: TextField(
+            controller:
+                context.read<ItemCountingProvider>().givenMoneyController,
+            cursorColor: AppColors.secondaryColor,
+            decoration: const InputDecoration(
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.secondaryColor)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.secondaryColor))),
             keyboardType: TextInputType.number,
-          )),
+          ),
           actions: [
             TextButton(
                 onPressed: () {
-                  if(context.read<ItemCountingProvider>().givenMoneyController.text.isNotEmpty){
+                  if (context
+                      .read<ItemCountingProvider>()
+                      .givenMoneyController
+                      .text
+                      .isNotEmpty) {
                     context.read<ItemCountingProvider>().checkBalance();
                     Navigator.pop(context);
                   }
