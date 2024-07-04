@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ItemCountingProvider extends ChangeNotifier{
   List<int> itemCounts = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   List<int> totalsList = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  double paneerTotal = 0.0;
+  double cheeseTotal = 0.0;
   int grandTotalPrice = 0;
   TextEditingController givenMoneyController = TextEditingController();
+  TextEditingController paneerGramEnterController = TextEditingController();
+  TextEditingController cheeseGramEnterController = TextEditingController();
   int balanceAmount = 0;
 
   void changeItemCount({required int value,required int index}){
@@ -132,19 +137,46 @@ class ItemCountingProvider extends ChangeNotifier{
     if(itemCounts[17] != 0){
       totalsList[17] = itemCounts[17] * 70;
     }else{
-      itemCounts[17] = 0;
-      totalsList[17] = 0;
+      // itemCounts[17] = 0;
+      // totalsList[17] = 0;
     }
 
     totalsList.forEach((value) {
       grandTotalPrice += value;
     },);
+
+    if(paneerTotal != 0){
+      grandTotalPrice = grandTotalPrice + paneerTotal.round();
+    }
+    if(cheeseTotal != 0){
+      grandTotalPrice = grandTotalPrice + cheeseTotal.round();
+    }
     notifyListeners();
   }
+
+  void calculatePannerandCheese({required String itemName}){
+      if(itemName == 'Cheese'){
+        grandTotalPrice = grandTotalPrice - cheeseTotal.round();
+        int cheeseGram = int.parse(cheeseGramEnterController.text.trim());
+        cheeseTotal = cheeseGram * 0.55;
+        grandTotalPrice += cheeseTotal.round();
+        notifyListeners();
+      }
+      if(itemName == 'Paneer'){
+        grandTotalPrice = grandTotalPrice - paneerTotal.round();
+        int paneerGram = int.parse(paneerGramEnterController.text.trim());
+        paneerTotal = paneerGram * 0.5;
+        grandTotalPrice += paneerTotal.round();
+        notifyListeners();
+      }
+    }
+  
 
   void resetValues(){
     itemCounts = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     totalsList = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    paneerTotal = 0;
+    cheeseTotal = 0;
     grandTotalPrice = 0;
     balanceAmount = 0;
     givenMoneyController.clear();

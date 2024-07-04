@@ -17,7 +17,9 @@ class ConstantData{
     'Ghee 1000g',
     'Ghee 500g',
     'Ghee 250g',
-    'Ghee 100g'
+    'Ghee 100g',
+    'Paneer',
+    'Cheese',
   ];
 
   static List<String> productPrice = [
@@ -38,6 +40,8 @@ class ConstantData{
     '580',
     '300',
     '170',
-    '70'
+    '70',
+    '0.5',
+    '0.55',
   ];
 }

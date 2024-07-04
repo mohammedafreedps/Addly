@@ -5,18 +5,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-Widget itemTile(
-    {required int index,
+Widget itemTile2({required int index,
     required BuildContext context,
     required int selectedItemCount,
     required String itemName,
-    required String itemPrice}) {
+    required String itemPrice}){
   return Padding(
     padding: const EdgeInsets.only(bottom: 25),
     child: Container(
       decoration: BoxDecoration(
           color: AppColors.secondaryColor,
-          borderRadius: BorderRadiusDirectional.circular(10)),
+          borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

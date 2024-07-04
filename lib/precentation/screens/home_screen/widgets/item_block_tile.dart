@@ -1,5 +1,5 @@
 import 'package:addly/data/constant_data.dart';
-import 'package:addly/precentation/screens/home_screen/widgets/item_tile.dart';
+import 'package:addly/precentation/screens/home_screen/widgets/item_tile_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -60,10 +60,11 @@ Widget itemBlockTitle({required int index, required BuildContext context, requir
     return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
   }
   if(itemName == ConstantData.productName[18]){
-    return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+    return itemTile(type: 1, index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
   }
-
-
+  if(itemName == ConstantData.productName[19]){
+    return itemTile(type: 1, index: index, context: context,selectedItemCount: selectedItemCount,  itemName: itemName, itemPrice: itemPrice);
+  }
   else{
     return itemTile(index: index, context: context,selectedItemCount: selectedItemCount,  itemName: 'else Item', itemPrice: itemPrice);
   }
