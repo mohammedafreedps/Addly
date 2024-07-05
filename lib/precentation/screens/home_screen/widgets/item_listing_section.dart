@@ -22,7 +22,7 @@ Widget itemListingSection({required BuildContext context}) {
                 Text('Items',style: TextStyles.boldSecondary.copyWith(fontSize: 30),),
                 IconButton(onPressed: (){
                   context.read<ItemCountingProvider>().resetValues();
-                  ScrollControllers.homeScreenListController.animateTo(0, duration: const Duration(seconds: 2), curve: Curves.decelerate);
+                  ScrollControllers.homeScreenListController.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
                 }, icon: const Icon(Icons.restart_alt,color: AppColors.secondaryColor,))
               ],
             ),
