@@ -112,7 +112,7 @@ class ItemCountingProvider extends ChangeNotifier {
     if (itemName == 'Cheese') {
       clearCheeseData();
     }
-    if(itemName == 'Paneer') {
+    if (itemName == 'Paneer') {
       clearPaneerData();
     }
   }
@@ -149,6 +149,11 @@ class ItemCountingProvider extends ChangeNotifier {
     cheeseAddWithItemcount = 0;
     gramAddedAndTotalCheeseDisplay = '-';
     cheeseGramToAddAndTotals = [];
+    paneerTotalDisplay = 0;
+    totalPaneerGram = 0;
+    totalPaneerPrice = 0;
+    gramAddedAndTotalPaneerDisplay = '-';
+    paneerGramToAddAndTotals = [];
     givenMoneyController.clear();
     notifyListeners();
   }
