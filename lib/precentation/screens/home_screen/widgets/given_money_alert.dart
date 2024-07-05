@@ -13,6 +13,7 @@ Future givenMoney({required BuildContext context}) {
                 context.read<ItemCountingProvider>().givenMoneyController,
             cursorColor: AppColors.secondaryColor,
             decoration: const InputDecoration(
+              prefix: Text('₹ ',style: TextStyles.normalAcsent,),
                 border: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.secondaryColor)),
                 focusedBorder: OutlineInputBorder(
