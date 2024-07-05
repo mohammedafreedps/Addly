@@ -1,3 +1,4 @@
+import 'package:addly/precentation/screens/home_screen/widgets/entering_item_grams.dart';
 import 'package:addly/precentation/utils/app_styles.dart';
 import 'package:addly/provider/item_counting_provider.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +34,11 @@ Widget itemTile1(
           ),
           itemName == 'Paneer'
               ? Text(
-                  '₹ ${context.watch<ItemCountingProvider>().paneerTotal}',
+                  '₹ ${context.watch<ItemCountingProvider>().paneerTotalDisplay}',
                   style: TextStyles.boldAcsent.copyWith(fontSize: 15),
                 )
               : Text(
-                  '₹ ${context.watch<ItemCountingProvider>().cheeseTotal.round()}',
+                  '₹ ${context.watch<ItemCountingProvider>().cheeseTotalDisplay.round()}',
                   style: TextStyles.boldAcsent.copyWith(fontSize: 15),
                 ),
           TextButton(
@@ -45,42 +46,7 @@ Widget itemTile1(
                 showDialog(
                     context: context,
                     builder: (context) {
-                      return AlertDialog(
-                        backgroundColor: AppColors.primaryColor,
-                        content: TextField(
-                          controller: itemName == "Paneer"
-                              ? context
-                                  .read<ItemCountingProvider>()
-                                  .paneerGramEnterController
-                              : context
-                                  .read<ItemCountingProvider>()
-                                  .cheeseGramEnterController,
-                          cursorColor: AppColors.secondaryColor,
-                          decoration: const InputDecoration(
-                              suffixText: 'g',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.secondaryColor)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.secondaryColor))),
-                          keyboardType: TextInputType.number,
-                        ),
-                        actions: [
-                          TextButton(
-                              onPressed: () {
-                                context
-                                    .read<ItemCountingProvider>()
-                                    .calculatePannerandCheese(
-                                        itemName: itemName);
-                                Navigator.pop(context);
-                              },
-                              child: const Text(
-                                'Enter',
-                                style: TextStyles.boldAcsent,
-                              ))
-                        ],
-                      );
+                      return enteringItemGrams(context: context,itemName: itemName);
                     });
               },
               child: const Text(
