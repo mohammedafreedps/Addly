@@ -57,6 +57,7 @@ class ItemCountingProvider extends ChangeNotifier {
     grandTotalPrice += totalCheesePrice.round();
     grandTotalPrice += totalPaneerPrice.round();
 
+    checkBalance();
     notifyListeners();
   }
 
@@ -81,6 +82,7 @@ class ItemCountingProvider extends ChangeNotifier {
         cheeseTotalDisplay = totalCheesePrice;
         grandTotalPrice += totalCheesePrice.round();
         cheeseGramEnterController.clear();
+        checkBalance();
         notifyListeners();
       }
     }
@@ -103,6 +105,7 @@ class ItemCountingProvider extends ChangeNotifier {
         paneerTotalDisplay = totalPaneerPrice;
         grandTotalPrice += totalPaneerPrice.round();
         paneerGramEnterController.clear();
+        checkBalance();
         notifyListeners();
       }
     }
@@ -124,6 +127,7 @@ class ItemCountingProvider extends ChangeNotifier {
     totalCheesePrice = 0;
     gramAddedAndTotalCheeseDisplay = '-';
     cheeseGramToAddAndTotals = [];
+    checkBalance();
     notifyListeners();
   }
 
@@ -134,6 +138,7 @@ class ItemCountingProvider extends ChangeNotifier {
     totalPaneerPrice = 0;
     gramAddedAndTotalPaneerDisplay = '-';
     paneerGramToAddAndTotals = [];
+    checkBalance();
     notifyListeners();
   }
 
@@ -159,8 +164,10 @@ class ItemCountingProvider extends ChangeNotifier {
   }
 
   void checkBalance() {
-    int givenAmount = int.tryParse(givenMoneyController.text.trim()) ?? 0;
-    balanceAmount = givenAmount - grandTotalPrice;
-    notifyListeners();
+    if (givenMoneyController.text.isNotEmpty) {
+      int givenAmount = int.tryParse(givenMoneyController.text.trim()) ?? 0;
+      balanceAmount = givenAmount - grandTotalPrice;
+      notifyListeners();
+    }
   }
 }
